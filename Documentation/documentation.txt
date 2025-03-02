@@ -41,7 +41,6 @@ Specifications
     - Menu
     - Orders
     - Announcements
-    - About Page
 
 
 
