@@ -1,0 +1,46 @@
+The following project will implement a web application for a coffee shop.
+The application will allow users to view the menu, place orders, give feedback, look at announcements and see details about the coffee shop.
+
+Requirements
+- Authentication and User Management
+    - Users can sign up, log in, log out, and reset their password
+    - Users can view their profile and update their information
+    - Users can view their order history and give feedback on past orders within 24 hours
+    - All users are stored in a MySQL database
+- Menu and Orders
+    - Users can view the menu
+    - Each item has a name, description, price and image
+    - Each item is categorized
+    - Users can add items to their cart
+    - Users can view their cart
+    - Users can place an order
+    - Orders have an OrderID, date, time, total price and status
+    - Orders are stored in a MySQL database
+    - Payment page (not real payment)
+- Announcements
+    - Admins can create announcements
+    - Announcements have a title, description and image
+    - Announcements are displayed on the home page
+    - Announcements are stored in a MySQL database
+- About Page
+    - Information about the coffee shop
+    - Location, hours, contact information, etc.
+
+Specifications
+- Frontend
+    - HTML, CSS, JavaScript
+    - Bootstrap
+    - React
+- Backend
+    - Node.js
+    - Express
+    - MySQL
+    - Docker
+- CRUD Features
+    - User Management
+    - Menu
+    - Orders
+    - Announcements
+
+
+
