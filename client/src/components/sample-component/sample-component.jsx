@@ -4,7 +4,7 @@ import axios from 'axios';
 function callServer() {
     axios.get('http://localhost:8000/test', {
         params: {
-            table: 'sample',
+            table: 'users',
         },
     }).then((response) => {
         console.log(response.data);

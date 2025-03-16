@@ -1,22 +1,51 @@
-import path from "path";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const config = {
-    entry: "./src/components/index.js",
-    mode: "development",
+module.exports = {
+    entry: "./src/index.jsx", // Entry file
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js",
+        publicPath: "/", // Ensures React Router works with direct URL access
+        clean: true, // Clears dist folder on rebuild
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"], // Resolve these file types
+    },
     module: {
         rules: [
             {
-                exclude: /(node_modules)/,
-                test: /\.(js|jsx)$/i,
-                loader: "babel-loader"
-            }
-        ]
+                test: /\.(js|jsx|ts|tsx)$/, // Babel for JSX/TSX
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env", "@babel/preset-react"],
+                    },
+                },
+            },
+            {
+                test: /\.css$/, // CSS loader
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/, // Image loader
+                type: "asset/resource",
+            },
+        ],
     },
-    output: {
-        path: path.resolve("./dist")
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./public/index.html", // HTML template
+        }),
+        new MiniCssExtractPlugin(),
+    ],
+    devServer: {
+        static: path.resolve(__dirname, "dist"),
+        compress: true,
+        port: 3000,
+        historyApiFallback: true, // Ensures React Router works with direct URL access
     },
-    plugins: []
+    mode: process.env.NODE_ENV === "production" ? "production" : "development",
 };
-
-export default config;
-
