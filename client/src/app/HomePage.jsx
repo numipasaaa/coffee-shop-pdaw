@@ -1,10 +1,9 @@
 import React from 'react';
-import { SampleComponent } from '../components';
 
-function HomePage() {
-    return (
-        <SampleComponent />
-    );
+function HomePage(){
+    return(
+        <h2 style={{textAlign:'center'}}>Welcome to Job Portal Application!!!</h2>
+    )
 }
 
 export default HomePage;

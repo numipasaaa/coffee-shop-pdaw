@@ -1,71 +1,147 @@
-// Import React and necessary hooks
-import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios
-import { useNavigate } from 'react-router'; // Import useNavigate hook
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
-function LoginPage(props) {
-    // State variables for username, password, and error message
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState({});
+    const navigate=useNavigate();
 
-    // Initialize useNavigate hook for navigation
-    const navigate = useNavigate();
+    // Validation function for email and password
+    const validateForm = () => {
+        const errors = {};
+        if (!email) {
+            errors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            errors.email = "Please enter a valid email address";
+        }
+        if (!password) {
+            errors.password = "Password is required";
+        }
+        return errors;
+    };
 
-    // Function to handle form submission
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate form fields
+        // const validationErrors = validateForm();
+        // if (Object.keys(validationErrors).length > 0) {
+        //   setErrors(validationErrors);
+        //   return;
+        // }
+
         try {
-            // Clear previous error messages
-            setErrorMessage('');
+            // Make API request to login
+            const response = await axios.post("http://localhost:8000/api/auth/login", {
+                email,
+                password,
+            });
 
-            // Send login request to server
-            const response = await axios.post('http://localhost:8000/login', { username, password });
+            if (response.data.success) {
+                console.log(response);
 
-            // If login successful, redirect to MainPage
-            if (response.status === 200) {
-                navigate('/home');
+                toast.success("Login successful!");
+                // Redirect or save token as needed
+                const token = response.data.token;
+                console.log(token);
+
+                sessionStorage.setItem("authToken", token);
+                navigate('/homeScreen')
+                fetchUserDetails();
+            } else {
+                toast.error(response.data.message || "Login failed");
             }
         } catch (error) {
-            console.error('Error:', error);
-
-            // If login failed, display error message
-            setErrorMessage('Your Username and\nPassword are incorrect.');
+            console.error("Error during login:", error);
+            toast.error(error.response.data.message || "Something went wrong. Please try again later.");
         }
     };
 
-    // JSX structure for login form
+
+
+    // useEffect(() => {
+
+    // }, []);
+    const fetchUserDetails = async () => {
+        try {
+            // Retrieve token from localStorage or other secure storage
+            const token = sessionStorage.getItem('authToken'); // Replace with actual token retrieval
+            console.log(token);
+
+            if (!token) {
+                // setError('User is not logged in');
+                return;
+            }
+
+            // Make the API request with the token in the Authorization header
+            const response = await axios.get('http://localhost:8000/api/auth/get-userDetails', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            console.log(response);
+
+            if (response.data.success) {
+                console.log(response.data.user);
+            } else {
+                console.log(response.data.message || 'Failed to fetch user details');
+            }
+        } catch (err) {
+            console.error('Error fetching user details:', err);
+            console.log(err.response?.data?.message || 'An error occurred');
+        }
+    };
+
+    // fetchUserDetails();
+
     return (
-        <div className="flex items-center justify-center min-h-screen">
-            <div className="mx-auto p-6 bg-white rounded-md shadow-md">
-                <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label htmlFor="username" className="block mb-2">Username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="password" className="block mb-2">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                        />
-                    </div>
-                    <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Login</button>
-                    {errorMessage && <p className="text-red-500 text-sm whitespace-pre-line text-center mt-4 ">{errorMessage}</p>} {/* Display error message if exists */}
-                </form>
-            </div>
+        <div className="login-container">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {errors.email && <span className="error-message">{errors.email}</span>}
+                </div>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {errors.password && <span className="error-message">{errors.password}</span>}
+                </div>
+                <button type="submit" className="login-btn">
+                    Login
+                </button>
+            </form>
+
+            <p style={{ textAlign: "center" }}>
+                Don't have an account?{" "}
+                <Link
+                    to="/signUp"
+                    className="toggle-link"
+                    style={{ color: "#007BFF", textDecoration: "underline" }}
+                >
+                    Sign Up
+                </Link>
+            </p>
         </div>
     );
-}
+};
 
-export default LoginPage;
+export default Login;
