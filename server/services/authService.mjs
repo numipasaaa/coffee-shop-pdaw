@@ -1,5 +1,5 @@
 // services/userService.js
-import { pool } from "../config/db.js";
+import { pool } from "../config/db.mjs";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -31,7 +31,6 @@ export const loginUser = async (email, password) => {
         if (rows.length === 0) {
             return { success: false, message: 'User not found' };
         }
-
         const user = rows[0];
         const passwordMatch = await bcrypt.compare(password, user.password);
 
@@ -54,7 +53,7 @@ export const loginUser = async (email, password) => {
             token,
             user: { user_id: user.user_id, email: user.email, full_name:user.full_name }
         };
-    } catch (error) {
+    } catch (error)
         console.error("Login error:", error);
         return { success: false, message: 'Login failed. Please try again later.' };
     }

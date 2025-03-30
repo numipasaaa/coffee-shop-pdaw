@@ -51,13 +51,13 @@ const Login = () => {
 
                 sessionStorage.setItem("authToken", token);
                 navigate('/homeScreen')
-                fetchUserDetails();
+                await fetchUserDetails();
             } else {
                 toast.error(response.data.message || "Login failed");
             }
         } catch (error) {
             console.error("Error during login:", error);
-            toast.error(error.response.data.message || "Something went wrong. Please try again later.");
+            toast.error(error.response?.data?.message || "Something went wrong. Please try again later.");
         }
     };
 
@@ -133,7 +133,7 @@ const Login = () => {
             <p style={{ textAlign: "center" }}>
                 Don't have an account?{" "}
                 <Link
-                    to="/signUp"
+                    to="/signup"
                     className="toggle-link"
                     style={{ color: "#007BFF", textDecoration: "underline" }}
                 >

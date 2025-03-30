@@ -63,11 +63,8 @@ const SignUp = () => {
             }
         } catch (error) {
             console.error('Error during registration:', error);
-            toast.error(error.response.data.message || "Something went wrong. Please try again later.");
+            toast.error("Something went wrong. Please try again later.");
         }
-
-
-
     }
 
     const handleInputChange = (e) => {

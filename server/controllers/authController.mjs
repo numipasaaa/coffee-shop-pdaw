@@ -1,6 +1,6 @@
-// controllers/authController.js
-import UserModel from '../models/userModel.js';
-import { registerUser, loginUser, getUserFromToken } from '../services/authService.js';
+// controllers/authController.mjs
+import UserModel from '../models/UserModel.mjs';
+import { registerUser, loginUser, getUserFromToken } from '../services/authService.mjs';
 
 export const register = async (req, res) => {
     const { username, full_name, email, password } = req.body;

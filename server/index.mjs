@@ -1,9 +1,11 @@
 import express from 'express';
-import userRoutes from './routes/userRoutes.js';
-import { checkConnection } from './config/db.js';
-import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.mjs';
+import { checkConnection } from './config/db.mjs';
+import authRoutes from './routes/authRoutes.mjs'
 import cors from 'cors'
+import dotenv from 'dotenv'
 
+dotenv.config();
 const app = express();
 app.use(cors());
 
