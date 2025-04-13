@@ -53,7 +53,7 @@ export const loginUser = async (email, password) => {
             token,
             user: { user_id: user.user_id, email: user.email, full_name:user.full_name }
         };
-    } catch (error)
+    } catch (error) {
         console.error("Login error:", error);
         return { success: false, message: 'Login failed. Please try again later.' };
     }

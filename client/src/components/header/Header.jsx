@@ -43,9 +43,6 @@ export function Header () {
                 <li>
                     <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
                 </li>
-                <li>
-                    <Link to="/jobs" className={location.pathname === '/jobs' ? 'active' : ''}>Jobs</Link>
-                </li>
 
                 {/* Conditional Rendering based on user login status */}
                 {userData ? (

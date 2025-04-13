@@ -14,10 +14,10 @@ const NotFound = lazy(() => import("./NotFound.jsx"));
 const App = () => {
     return (
         <Router>
-            <Header/>
+            {/*<Header/>*/}
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/homeScreen" element={<UserHomeScreen />} />
