@@ -4,7 +4,6 @@ import {Link, useNavigate} from "react-router";
 import { toast } from "react-toastify";
 import UserModel from "../model/userModel";
 import signupValidation from "./SignupValidation";
-import loginValidation from "./LoginValidation";
 
 function SignupPage() {
     const [values, setValues] = useState({
@@ -16,6 +15,9 @@ function SignupPage() {
     });
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+
+    axios.defaults.withCredentials = true;
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const err = signupValidation(values);

@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-
-import {Header} from "../components";
+import { Header } from "../components/index";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; // Import default CSS for toastify
 import UserHomeScreen from "./UserHomeScreen.jsx";
@@ -14,7 +13,7 @@ const NotFound = lazy(() => import("./NotFound.jsx"));
 const App = () => {
     return (
         <Router>
-            {/*<Header/>*/}
+            <Header />
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                     <Route path="" element={<HomePage />} />
