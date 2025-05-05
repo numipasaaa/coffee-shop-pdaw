@@ -1,8 +1,9 @@
 import React from 'react';
+import { HeroCarousel } from "../components/index";
 
 function HomePage(){
     return(
-        <p>backup content</p>
+        <HeroCarousel></HeroCarousel>
     )
 }
 

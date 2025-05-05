@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import '../../app/css/App.css';
-import 'tailwindcss';
 
 import { Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 
@@ -38,17 +37,17 @@ export function Header() {
     }
 
     return (
-        <nav className="w-full bg-pink-400 text-white">
+        <nav className="icream-nav">
             {/* Top utility bar */}
-            <div className="flex justify-between items-center px-6 py-2">
-                <div className="flex gap-4">
+            <div className="utility-bar">
+                <div className="utility-links">
                     <a href="/faqs" className="hover:underline">FAQs</a>
                     <span>|</span>
                     <a href="/help" className="hover:underline">Help</a>
                     <span>|</span>
                     <a href="/support" className="hover:underline">Support</a>
                 </div>
-                <div className="flex gap-4">
+                <div className="social-icons">
                     <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
                     <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
                     <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
@@ -58,19 +57,19 @@ export function Header() {
             </div>
 
             {/* Main navigation */}
-            <div className="bg-white rounded-full mx-6 mb-4 px-8 py-4 flex justify-between items-center">
-                <div className="flex gap-8 items-center">
+            <div className="main-nav">
+                <div className="left-links">
                     <Link to="/" className="hover:text-pink-400">Home</Link>
                     <Link to="/" className="hover:text-pink-400">About</Link>
                     <Link to="/" className="hover:text-pink-400">Product</Link>
                 </div>
 
-                <div className="text-4xl font-bold">
-                    <span className="text-blue-400">i</span>
-                    <span className="text-pink-400">Coffee</span>
+                <div className="logo">
+                    <span className="logo-i">i</span>
+                    <span className="logo-cream">Coffee</span>
                 </div>
 
-                <div className="flex gap-8 items-center">
+                <div className="right-links">
                     <Link to="/" className="hover:text-pink-400">Contact</Link>
                     {userData ? (
                         <>
