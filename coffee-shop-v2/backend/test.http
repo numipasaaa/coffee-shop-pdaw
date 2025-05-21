@@ -1,3 +1,14 @@
+POST http://localhost:4000/e
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "password": "password123"
+}
+
+###
+
 ### GET request to example server
 GET http://localhost:4000/
     ?generated-in=WebStorm
@@ -41,6 +52,25 @@ Content-Type: application/json
 
 {
     "id": "682da4bbb65421e59315c341"
+}
+
+### POST request for registering a user
+POST http://localhost:4000/api/user/register?generated-in=WebStorm
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "johndoe@gmail.com",
+    "password": "password123"
+}
+
+### POST request for registering a user
+POST http://localhost:4000/api/user/login?generated-in=WebStorm
+Content-Type: application/json
+
+{
+  "email": "johndoe@gmail.com",
+  "password": "password123"
 }
 
 ###

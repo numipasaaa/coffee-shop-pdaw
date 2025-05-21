@@ -1,0 +1,46 @@
+.list-table-format{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 5%;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 16px;
+}
+
+.list-table-format.title{
+    background-color: #f9f9f9;
+    column-gap: 12.5%;
+}
+
+.list-table-format img{
+    width: 150px;
+}
+
+@media (max-width: 600px) {
+    .list-table-format{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .list-table-format.title{
+        display: none;
+    }
+}
+
+.delete-btn {
+    max-width:120px;
+    border: none;
+    padding: 10px;
+    background-color: hotpink;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-btn:hover{
+    background-color: red;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
