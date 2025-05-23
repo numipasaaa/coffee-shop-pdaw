@@ -1,68 +1,68 @@
-POST http://localhost:4000/e
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "johndoe@gmail.com",
-  "password": "password123"
-}
-
-###
-
-### GET request to example server
-GET http://localhost:4000/
-    ?generated-in=WebStorm
-
-
-
-### POST request to example server with file upload
-POST http://localhost:4000/api/food/add?generated-in=WebStorm
-Content-Type: multipart/form-data; boundary=WebStormFormBoundary
-
---WebStormFormBoundary
-Content-Disposition: form-data; name="name"
-
-Pizza
---WebStormFormBoundary
-Content-Disposition: form-data; name="description"
-
-Delicious cheese pizza
---WebStormFormBoundary
-Content-Disposition: form-data; name="price"
-
-9.99
---WebStormFormBoundary
-Content-Disposition: form-data; name="category"
-
-Italian
---WebStormFormBoundary
-Content-Disposition: form-data; name="image"; filename="food_1.png"
-Content-Type: image/png
-
-< ./food_1.png
---WebStormFormBoundary--
-
-
-### GET request to example server with query parameters
-GET http://localhost:4000/api/food/list?generated-in=WebStorm
-
-### POST request to remove food item
-POST http://localhost:4000/api/food/remove?generated-in=WebStorm
-Content-Type: application/json
-
-{
-    "id": "682da4bbb65421e59315c341"
-}
-
-### POST request for registering a user
-POST http://localhost:4000/api/user/register?generated-in=WebStorm
-Content-Type: application/json
-
-{
-    "name": "John Doe",
-    "email": "johndoe@gmail.com",
-    "password": "password123"
-}
+#POST http://localhost:4000/e
+#Content-Type: application/json
+#
+#{
+#  "name": "John Doe",
+#  "email": "johndoe@gmail.com",
+#  "password": "password123"
+#}
+#
+####
+#
+#### GET request to example server
+#GET http://localhost:4000/
+#    ?generated-in=WebStorm
+#
+#
+#
+#### POST request to example server with file upload
+#POST http://localhost:4000/api/food/add?generated-in=WebStorm
+#Content-Type: multipart/form-data; boundary=WebStormFormBoundary
+#
+#--WebStormFormBoundary
+#Content-Disposition: form-data; name="name"
+#
+#Pizza
+#--WebStormFormBoundary
+#Content-Disposition: form-data; name="description"
+#
+#Delicious cheese pizza
+#--WebStormFormBoundary
+#Content-Disposition: form-data; name="price"
+#
+#9.99
+#--WebStormFormBoundary
+#Content-Disposition: form-data; name="category"
+#
+#Italian
+#--WebStormFormBoundary
+#Content-Disposition: form-data; name="image"; filename="food_1.png"
+#Content-Type: image/png
+#
+#< ./food_1.png
+#--WebStormFormBoundary--
+#
+#
+#### GET request to example server with query parameters
+#GET http://localhost:4000/api/food/list?generated-in=WebStorm
+#
+#### POST request to remove food item
+#POST http://localhost:4000/api/food/remove?generated-in=WebStorm
+#Content-Type: application/json
+#
+#{
+#    "id": "682da4bbb65421e59315c341"
+#}
+#
+#### POST request for registering a user
+#POST http://localhost:4000/api/user/register?generated-in=WebStorm
+#Content-Type: application/json
+#
+#{
+#    "name": "John Doe",
+#    "email": "johndoe@gmail.com",
+#    "password": "password123"
+#}
 
 ### POST request for registering a user
 POST http://localhost:4000/api/user/login?generated-in=WebStorm
@@ -71,6 +71,14 @@ Content-Type: application/json
 {
   "email": "johndoe@gmail.com",
   "password": "password123"
+}
+
+### POST request for adding to cart
+POST http://localhost:4000/api/cart/add?generated-in=WebStorm
+Content-Type: application/json
+
+{
+  "itemId": "682ddbe7a15b216d1e104c29"
 }
 
 ###
