@@ -1,6 +1,6 @@
 .footer{
     color: #d9d9d9;
-    background-color: #323232;
+    background-color: #654953;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,6 +60,12 @@
 }
 
 .footer-copyright a:hover{
+    color: hotpink;
+    transition: 0.3s;
+    text-decoration: underline;
+}
+
+.footer-content-left a:hover{
     color: hotpink;
     transition: 0.3s;
     text-decoration: underline;

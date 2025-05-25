@@ -1,0 +1,33 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Coffee cup centered -->
+  <g transform="translate(15, 15)">
+    <!-- Cup body -->
+    <path d="M8 45 L8 20 Q8 15 13 15 L37 15 Q42 15 42 20 L42 45 Q42 50 37 50 L13 50 Q8 50 8 45 Z" 
+          fill="#f8f8f8" 
+          stroke="#e91e63" 
+          stroke-width="2.5"/>
+    
+    <!-- Coffee surface with pink tint -->
+    <ellipse cx="25" cy="20" rx="12" ry="2.5" fill="#fce4ec"/>
+    
+    <!-- Handle -->
+    <path d="M42 25 Q50 25 50 35 Q50 45 42 45" 
+          fill="none" 
+          stroke="#e91e63" 
+          stroke-width="2.5"/>
+    
+    <!-- Steam (minimalistic) -->
+    <g opacity="0.7">
+      <path d="M20 8 Q20 3 22 6 Q22 1 24 4 Q24 -1 26 2" 
+            fill="none" 
+            stroke="#e91e63" 
+            stroke-width="2" 
+            stroke-linecap="round"/>
+      <path d="M28 8 Q28 3 30 6 Q30 1 32 4" 
+            fill="none" 
+            stroke="#e91e63" 
+            stroke-width="2" 
+            stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
