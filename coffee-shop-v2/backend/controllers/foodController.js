@@ -1,5 +1,6 @@
 import foodModel from "../models/foodModel.js";
 import fs from "fs";
+import userModel from "../models/userModel.js";
 
 // add food item
 const addFood = async (req, res) => {
@@ -33,6 +34,42 @@ const listFood = async (req, res)=> {
     }
 }
 
+const fetchFood = async (req, res)=> {
+    const foodId = req.body.itemId;
+
+    try {
+        const food = await foodModel.findById(foodId);
+        res.json({success: true, data: food});
+    }catch(err) {
+        console.log(err)
+        res.json({success: false, message: "Failed to fetch food items."});
+    }
+}
+
+const editFood = async (req, res) => {
+    const itemId = req.body.data._id;
+    const name = req.body.data.name;
+    const description = req.body.data.description;
+    const price = req.body.data.price;
+    const image = req.body.data.image;
+    const category = req.body.data.category;
+
+    try {
+        const item = await foodModel.findById(itemId);
+
+        if (!item) {
+            return res.json({success: false, message: "Failed to edit food item."});
+        }
+
+        await foodModel.findByIdAndUpdate(itemId, {name: name, description: description, price: price, image: image, category: category});
+
+        res.json({success: true, message: "Food item updated successfully."});
+    } catch (e) {
+        console.log(e);
+        res.json({success: false, message: "Failed to edit food item."});
+    }
+}
+
 // remove food item
 const removeFood = async (req, res) => {
     const foodId = req.body.id;
@@ -52,4 +89,4 @@ const removeFood = async (req, res) => {
     }
 }
 
-export { addFood, listFood, removeFood };
+export { addFood, listFood, removeFood, editFood, fetchFood };

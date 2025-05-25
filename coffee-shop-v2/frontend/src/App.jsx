@@ -10,6 +10,7 @@ import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from "./pages/Verify/Verify.jsx";
 import MyOrders from "./pages/MyOrders/MyOrders.jsx";
+import MyProfile from "./pages/MyProfile/MyProfile.jsx";
 
 const App = () => {
     const [showLogin, setShowLogin] = React.useState(false);
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path="/order" element={<PlaceOrder />} />
                     <Route path='/verify' element={<Verify/>} />
                     <Route path='/myorders' element={<MyOrders />} />
+                    <Route path='/myprofile' element={<MyProfile />} />
                 </Routes>
             </div>
             <Footer />

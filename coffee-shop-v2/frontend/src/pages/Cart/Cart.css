@@ -88,6 +88,11 @@
     cursor: pointer;
 }
 
+.cart-total button:hover{
+    transition: 0.2s;
+    transform: scale(1.05);
+}
+
 .cart-promocode{
     flex: 1;
 }
@@ -119,6 +124,12 @@
     border: none;
     color: white;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-promocode-input button:hover{
+    transition: 0.2s;
+    transform: scale(1.05);
 }
 
 @media (max-width: 750px){

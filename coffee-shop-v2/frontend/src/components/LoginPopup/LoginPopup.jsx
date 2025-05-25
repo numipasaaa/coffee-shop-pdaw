@@ -30,8 +30,11 @@ const LoginPopup = ({setShowLogin}) => {
         if (currState === "Sign Up") {
             newUrl += "/api/user/register";
         }
-        else {
+        else if (currState === "Login") {
             newUrl += "/api/user/login";
+        }
+        else {
+            newUrl += "/api/user/reset";
         }
         const response = await axios.post(newUrl, data);
 
@@ -54,11 +57,11 @@ const LoginPopup = ({setShowLogin}) => {
                     <img onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt=""/>
                 </div>
                 <div className="login-popup-inputs">
-                    {currState==="Login" ? <></> : <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder="Your name" required />}
+                    {currState !=="Sign Up" ? <></> : <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder="Your name" required />}
                     <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder="Your email" required />
                     <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder="Your password" required />
                 </div>
-                <button type='submit'>{currState==="Sign Up" ? "Create account" : "Login"}</button>
+                <button type='submit'>{currState==="Sign Up" ? "Create account" : currState==="Login" ? "Login" : "Reset Password"}</button>
                 {currState==="Sign Up"
                     ? <>
                         <div className="login-popup-condition">
@@ -70,7 +73,10 @@ const LoginPopup = ({setShowLogin}) => {
                 }
 
                 {currState==="Login"
-                    ? <p>Create a new account? <span onClick={()=>setCurrState("Sign Up")}>Click here</span></p>
+                    ? <>
+                        <p>Create a new account? <span onClick={()=>setCurrState("Sign Up")}>Click here</span></p>
+                        <p>Forgot your password? <span onClick={()=>setCurrState("Reset Password")}>Click here</span></p>
+                    </>
                     : <p>Already have an account? <span onClick={()=>setCurrState("Login")}>Login here</span></p>}
 
 

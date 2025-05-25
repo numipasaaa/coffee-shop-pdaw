@@ -5,6 +5,7 @@
     gap: 30px;
     border: 1px solid hotpink;
     padding: 20px;
+    border-radius: 5px;
     margin: 30px 0px;
     font-size: 14px;
     color: #505050;
@@ -26,6 +27,7 @@
 .order-item select {
     background-color: #ffedfb;
     border: 1px solid hotpink;
+    border-radius: 5px;
     width: max(10vw, 120px);
     padding: 10px;
     outline: none;

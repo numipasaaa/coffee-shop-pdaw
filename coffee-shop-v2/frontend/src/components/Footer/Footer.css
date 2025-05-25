@@ -71,6 +71,15 @@
     text-decoration: underline;
 }
 
+.logo {
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
 @media (max-width: 750px){
     .footer-content{
         display: flex;

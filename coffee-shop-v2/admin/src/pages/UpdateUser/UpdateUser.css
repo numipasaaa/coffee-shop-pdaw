@@ -1,0 +1,61 @@
+.user-data {
+    width: 70%;
+    margin-left: max(5vw, 25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+.user-data form{
+    gap: 20px;
+}
+
+.user-data h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.user-data form input {
+    padding: 10px;
+    width: max(40%, 280px);
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-name, .add-email, .add-password {
+    margin-bottom: 20px;
+}
+
+.user-data button {
+    max-width:120px;
+    border: none;
+    padding: 10px;
+    background-color: hotpink;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin : 20px 10px;
+}
+
+.user-data button:hover{
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+.user-data .delete-btn:hover {
+    background-color: red;
+    transition: 0.3s;
+    transform: scale(1.1);
+
+}
+
+.user-data-info p {
+    margin-bottom: 20px;
+}
+
+.user-data-info {
+    gap: 20px;
+}

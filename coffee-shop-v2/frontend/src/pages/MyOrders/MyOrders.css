@@ -57,4 +57,28 @@
     .my-orders-order button {
         font-size: 10px;
     }
+
+    .my-orders-no-order button {
+        font-size: 10px;
+    }
+}
+
+.my-orders-no-order button:hover {
+    transition: 0.2s;
+    transform: scale(1.05);
+}
+
+.my-orders-no-order p {
+    margin-top: 20px;
+}
+
+.my-orders-no-order button {
+    border: none;
+    padding: 12px 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    background-color: hotpink;
+    cursor: pointer;
+    color: white;
 }

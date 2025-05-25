@@ -23,7 +23,7 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: item.name,
                 },
-                unit_amount: item.price * 100,
+                unit_amount: Math.round(item.price * 100),
             },
             quantity: item.quantity,
         }))
@@ -103,4 +103,21 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export {placeOrder, verifyOrder, userOrders, listOrders, updateStatus};
+const removeOrder = async (req, res) => {
+    const orderId = req.body.id;
+
+    try {
+        const order = await orderModel.findById(orderId);
+        if (order) {
+            await orderModel.findByIdAndDelete(orderId);
+            res.json({success: true, message: "Order removed successfully."});
+        } else {
+            res.json({success: false, message: "Order not found."});
+        }
+    } catch (err) {
+        console.log(err);
+        res.json({success: false, message: "Failed to remove order."});
+    }
+}
+
+export {placeOrder, verifyOrder, userOrders, listOrders, updateStatus, removeOrder};
