@@ -8,7 +8,7 @@ A simple and intuitive web application for PinCafe, allowing customers to easily
 
 # Authentication and User Management
 - Users can sign up, log in, log out, and reset their password
-- Users can view their profile and update their information
+- Users can view their profile, update their information and delete their account
 - All users are stored in a MongoDB database
 
 # Menu and Orders
@@ -18,18 +18,18 @@ A simple and intuitive web application for PinCafe, allowing customers to easily
 - Users can add items to their cart
 - Users can view their cart
 - Users can place an order
-- Orders have an OrderID, date, time, total price and status
+- Orders have an orderID, date, amount, userID, payment(if the order was paid), address and status
 - Orders are stored in a MongoDB database
 - Payment page using Stripe
 
 # Admin Panel
 - Admins can view all items
 - Admins can add items
-- Admins can edit an item's data
+- Admins can edit and delete an item's data
 - Admins can view all ongoing orders
 - Admins can update the order status
 - Admins can view all users registered
-- Admins can edit an user's data
+- Admins can edit and delete an user's data
 
 # Specifications
 - Frontend
