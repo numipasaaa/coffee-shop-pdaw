@@ -1,5 +1,4 @@
 # PinCafe Coffee Shop Web Application
-# Exploding Kittens Multiplayer Game
 A simple and intuitive web application for PinCafe, allowing customers to easily browse our menu, customize their orders, and enjoy a seamless pickup experience.
 
 ## Components
